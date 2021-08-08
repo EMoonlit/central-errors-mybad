@@ -15,7 +15,7 @@ namespace ErrorCenter.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class ErrorsController : ControllerBase
     {
         private readonly ErrorCenterContext _context;
