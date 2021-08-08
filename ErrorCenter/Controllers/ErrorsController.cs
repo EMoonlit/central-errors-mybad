@@ -9,10 +9,11 @@ using ErrorCenter.Data;
 using ErrorCenter.Models;
 using ErrorCenter.Services;
 using Microsoft.AspNetCore.Authorization;
+using ErrorCenter.Dtos;
 
 namespace ErrorCenter.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     [Authorize]
     public class ErrorsController : ControllerBase
@@ -177,9 +178,17 @@ namespace ErrorCenter.Controllers
 
         // POST: api/Errors
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost("{userId}")]
+        [HttpPost("{id}")]
         public async Task<ActionResult<Error>> PostError(Error error)
         {
+            //Error error = new()
+            //{
+            //    Title = errorDto.Title,
+            //    Description = errorDto.Description,
+            //    Level = errorDto.Level,
+            //    EventsCount = errorDto.EventsCount
+            //};
+
             _context.Error.Add(error);
             await _context.SaveChangesAsync();
 

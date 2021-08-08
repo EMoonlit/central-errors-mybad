@@ -12,13 +12,13 @@ using System.Threading.Tasks;
 
 namespace ErrorCenter.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
-    public class AtuhController : ControllerBase
+    public class AuthController : ControllerBase
     {
         private readonly ErrorCenterContext _context;
 
-        public AtuhController(ErrorCenterContext context)
+        public AuthController(ErrorCenterContext context)
         {
             _context = context;
         }
@@ -49,7 +49,7 @@ namespace ErrorCenter.Controllers
             return token;
         }
 
-        [HttpPost("createuser")]
+        [HttpPost("register")]
         public async Task<ActionResult<User>> PostUser(CreateUserDto userDto)
         {
             User user = new()
